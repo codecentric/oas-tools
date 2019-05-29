@@ -148,7 +148,7 @@ function checkRequestData(oasDoc, requestedSpecPath, method, res, req, next) { /
         // a multipart/form-data request has a "files" property in the request whose
         // properties need to be passed to evaluating the required parameters in the openAPI spec
         if (contentType.toLowerCase() === "multipart/form-data") {
-          if (req.file) {
+          if (req.file) { // eslint-disable-line
             data = addFileToJSONPropertyValidation(req.file, data)
           } else if (req.files) {
             data = addFilesToJSONPropertyValidation(req.files, data);

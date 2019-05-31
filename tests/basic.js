@@ -1304,7 +1304,7 @@ function miscTests() {
 function multipartFormTests() {
     describe('/POST multipart-formdata pet', () => {
         // throughout this block: keep "function" in it-callback for "this"-scope
-        
+
         it('should throw 401 for adding a pet via multipart/form-data b/c no JWT was provided', function() { // eslint-disable-line
             const pet = {
                 id: 4711,
@@ -1325,7 +1325,7 @@ function multipartFormTests() {
                     throw err;
                 })
         })
-        
+
         it('should throw 403 for adding a pet via multipart/form-data b/c provided JWT is not valid', function() { // eslint-disable-line
             const pet = {
                 id: 4711,

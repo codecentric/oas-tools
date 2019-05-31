@@ -7,14 +7,14 @@ var fs = require('fs'),
 var express = require("express");
 var bodyParser = require('body-parser');
 var app = express();
-// multer is the official express middleware 
+// multer is the official express middleware
 // handling multipart/formdata requests
 const multer = require('multer');
 const upload = multer();
 app.use(bodyParser.json({
   strict: false
 }));
-app.use(upload.any()); // allow unlimited number of files with a request
+app.use(upload.single('file')); // allow unlimited number of files with a request
 
 var oasTools = require('../../src/index.js');
 var jsyaml = require('js-yaml');
@@ -67,7 +67,7 @@ function init(done) {
       done();
     });
   });
-  
+
   app.get('/info', (req, res) => {
     res.send({
       infoEN: "This is a very simple API that uses the oas-tools Module!",
@@ -76,10 +76,10 @@ function init(done) {
   });
 }
 app.init = init;
-app.getServer = function getServer() { 
+app.getServer = function getServer() {
   return app;
 }
-app.close = function close() { 
+app.close = function close() {
   process.exit(0);
 }
 
